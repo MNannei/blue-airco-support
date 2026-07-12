@@ -15,4 +15,16 @@ La suite contiene il test dell'endpoint `GET /health` e, per il safety engine:
 - test del servizio applicativo, incluso il divieto di invio automatico;
 - scenari critici, ordinari e ambigui.
 
-Le regole sono deterministiche e indipendenti da LLM. I test negativi non devono indebolire i requisiti critici: ogni nuova esclusione richiede un caso documentato e una verifica di regressione. Contract, integration ed end-to-end test restano da aggiungere quando esisteranno interfacce o persistenza corrispondenti.
+Le regole sono deterministiche e indipendenti da LLM. I test negativi non devono indebolire i requisiti critici: ogni nuova esclusione richiede un caso documentato e una verifica di regressione.
+
+Per la persistenza, la CI usa PostgreSQL reale e verifica:
+
+- upgrade/downgrade Alembic ripetuto;
+- effetti su ticket, messaggi, safety assessment e audit;
+- vincoli di idempotenza sequenziale e concorrente;
+- rollback e conservazione del ticket in caso di errore safety;
+- immutabilità applicativa di AuditEvent;
+- API interne e collegamento ProductUnit;
+- scenario safety persistito senza invio automatico.
+
+I test unitari vengono eseguiti separatamente dai test integration/scenario. Contract ed end-to-end completi restano futuri.

@@ -41,6 +41,10 @@ python -m uvicorn app.main:app --reload
 
 Il servizio risponde su `http://localhost:8000`; l'health check è disponibile su `GET /health`.
 
+## Safety engine
+
+La Milestone 2 introduce un motore deterministico, indipendente da LLM, che classifica segnali di sicurezza espliciti come `none`, `warning` o `immediate_stop`. I casi critici bloccano il workflow ordinario e richiedono escalation umana. Ogni valutazione produce un audit strutturato con input anonimizzato; il servizio non invia messaggi ai clienti e non determina cause tecniche certe.
+
 ## Test
 
 ```bash

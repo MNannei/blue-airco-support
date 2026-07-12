@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     app_name: str = "blue-airco-support"
     app_env: str = "development"
     database_url: str = (
-        "postgresql://blue_airco:local-development-only@localhost:5432/"
+        "postgresql+asyncpg://blue_airco:local-development-only@localhost:5432/"
         "blue_airco_support"
     )
 

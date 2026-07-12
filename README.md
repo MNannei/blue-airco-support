@@ -33,6 +33,18 @@ Avviare PostgreSQL:
 docker compose up -d db
 ```
 
+Applicare lo schema database (non viene usato `create_all`):
+
+```bash
+python -m alembic upgrade head
+```
+
+Per annullare la migrazione corrente:
+
+```bash
+python -m alembic downgrade base
+```
+
 Avviare quindi l'API dall'ambiente virtuale attivo:
 
 ```bash
@@ -45,11 +57,17 @@ Il servizio risponde su `http://localhost:8000`; l'health check è disponibile s
 
 La Milestone 2 introduce un motore deterministico, indipendente da LLM, che classifica segnali di sicurezza espliciti come `none`, `warning` o `immediate_stop`. I casi critici bloccano il workflow ordinario e richiedono escalation umana. Ogni valutazione produce un audit strutturato con input anonimizzato; il servizio non invia messaggi ai clienti e non determina cause tecniche certe.
 
+## Ticket e persistenza
+
+La Milestone 3 persiste ticket, messaggi inbound, safety assessment ed eventi audit in PostgreSQL tramite SQLAlchemy asincrono. Gli endpoint sotto `/internal` sono strumenti interni non autenticati e non devono essere esposti pubblicamente. La deduplicazione usa `external_message_id`; non esiste alcun invio automatico verso clienti.
+
 ## Test
 
 ```bash
 python -m pytest
 ```
+
+I test di integrazione richiedono PostgreSQL e lo schema Alembic aggiornato.
 
 I test non sono stati eseguiti nell'ambiente corrente perché Python e Docker non sono disponibili.
 

@@ -22,9 +22,11 @@ La revisione `0001_initial_schema` crea e rimuove l'intero schema in ordine refe
 - Conservazione di ticket e messaggio se la fase safety non può essere persistita.
 - Endpoint esclusivamente interni, privi di invio outbound.
 
-## Test
+## Test e CI
 
-Sono inclusi test unitari di stato ticket, test migrazioni, persistenza, idempotenza sequenziale e concorrente, errore database, immutabilità audit, collegamento unità, API interne e scenario safety persistito. Il conteggio e l'esito effettivi sono quelli pubblicati dal run GitHub Actions della milestone.
+Sono inclusi test unitari di stato ticket, test migrazioni, persistenza, idempotenza sequenziale e concorrente, errore database, immutabilità audit, collegamento unità, API interne e scenario safety persistito.
+
+Il run GitHub Actions `29198700799` ha eseguito 28 test unitari e 14 test integration/scenario: 42 test superati e 0 falliti. Il workflow è terminato con `Success` in 41 secondi. È presente un warning di deprecazione Starlette relativo al passaggio futuro da `httpx` a `httpx2` per `TestClient`.
 
 ## Limiti e rischi
 

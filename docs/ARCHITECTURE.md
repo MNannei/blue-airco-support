@@ -10,6 +10,8 @@
 - `models`: entità persistite per utenti, clienti, unità, ticket, messaggi, safety, audit e webhook.
 - `services`: transazioni applicative, deduplicazione e persistenza safety/audit.
 - `workflows`: orchestrazione esplicita dei passaggi operativi.
+- `services.knowledge_import`: validazione, deduplicazione e import transazionale della knowledge base.
+- `cli.knowledge_import`: interfaccia amministrativa locale per validate/run/report.
 - `alembic`: schema versionato; nessun `create_all` viene eseguito dall'applicazione.
 
 ## Persistenza e transazioni
@@ -40,3 +42,9 @@ messaggio
 ```
 
 La bozza non viene inviata automaticamente. Non sono presenti integrazioni OpenAI, WhatsApp o automazioni rivolte ai clienti. Il testo non determina diagnosi certe o decisioni di garanzia.
+
+## Confine della knowledge base
+
+I file sorgente restano in uno storage locale o privato esterno al repository applicativo. PostgreSQL conserva metadati governati, hash, associazioni e audit. Contenuti con lo stesso SHA-256 condividono un solo record `KnowledgeContent`, mantenendo più riferimenti `KnowledgeAttachment`.
+
+Solo documenti con stato `approved` possono avere `authoritative=true`. Le trascrizioni automatiche sono sempre importate con `authoritative=false`. I campi prodotto vuoti significano sconosciuto e non applicabilità universale.

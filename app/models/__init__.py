@@ -13,6 +13,15 @@ from app.models.entities import (
     Vessel,
     WebhookEvent,
 )
+from app.models.knowledge import (
+    KnowledgeAttachment,
+    KnowledgeAudioTranscript,
+    KnowledgeCase,
+    KnowledgeContent,
+    KnowledgeDocument,
+    KnowledgeImportBatch,
+    KnowledgeProductScope,
+)
 
 __all__ = [
     "AuditEvent",
@@ -20,6 +29,13 @@ __all__ = [
     "Contact",
     "Customer",
     "Message",
+    "KnowledgeAttachment",
+    "KnowledgeAudioTranscript",
+    "KnowledgeCase",
+    "KnowledgeContent",
+    "KnowledgeDocument",
+    "KnowledgeImportBatch",
+    "KnowledgeProductScope",
     "ProductUnit",
     "SafetyAssessment",
     "Ticket",

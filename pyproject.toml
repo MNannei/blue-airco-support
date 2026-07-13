@@ -24,6 +24,9 @@ dev = [
   "pytest-asyncio>=0.24,<1.0",
 ]
 
+[project.scripts]
+knowledge-import = "app.cli.knowledge_import:main"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"

@@ -18,3 +18,8 @@
 | REQ-014 | Un errore safety non elimina ticket e messaggio | `test_safety_persistence_error_preserves_ticket_and_message` | Coperto |
 | REQ-015 | AuditEvent è immutabile a livello applicativo | `test_audit_event_is_immutable` | Coperto |
 | REQ-016 | API ticket interne persistono safety e audit senza invio | `tests/integration/test_internal_ticket_api.py` | Coperto |
+| REQ-017 | Il pacchetto knowledge viene validato prima della scrittura | `tests/unit/test_knowledge_import.py` | Coperto |
+| REQ-018 | Hash errati e path traversal sono rifiutati | `tests/unit/test_knowledge_import.py` | Coperto |
+| REQ-019 | L'import è transazionale, auditabile e idempotente | `tests/integration/test_knowledge_import.py` | Coperto |
+| REQ-020 | Documenti non approvati e trascrizioni automatiche non sono autorevoli | `test_transactional_import_preserves_governance` | Coperto |
+| REQ-021 | I casi riservati mantengono l'accesso ristretto | `test_restricted_access_cannot_be_removed` | Coperto |

@@ -11,7 +11,10 @@ async def db_session() -> AsyncSession:
         await session.execute(
             text(
                 "TRUNCATE audit_events, safety_assessments, messages, tickets, "
-                "product_units, vessels, contacts, customers, users, webhook_events CASCADE"
+                "product_units, vessels, contacts, customers, users, webhook_events, "
+                "knowledge_audio_transcripts, knowledge_product_scopes, knowledge_documents, "
+                "knowledge_attachments, knowledge_contents, knowledge_cases, "
+                "knowledge_import_batches CASCADE"
             )
         )
         await session.commit()

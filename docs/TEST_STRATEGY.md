@@ -28,3 +28,14 @@ Per la persistenza, la CI usa PostgreSQL reale e verifica:
 - scenario safety persistito senza invio automatico.
 
 I test unitari vengono eseguiti separatamente dai test integration/scenario. Contract ed end-to-end completi restano futuri.
+
+Per l'import della knowledge base sono verificati:
+
+- pacchetto completo e import-ready;
+- mismatch SHA-256 e file mancanti;
+- path traversal;
+- conservazione degli accessi ristretti;
+- import transazionale e idempotenza;
+- deduplicazione dei contenuti;
+- esclusione da uso autorevole di documenti non approvati e trascrizioni automatiche;
+- creazione dell'audit di importazione.

@@ -75,6 +75,18 @@ I test non sono stati eseguiti nell'ambiente corrente perché Python e Docker no
 
 La workflow GitHub Actions in `.github/workflows/ci.yml` installa il progetto con le dipendenze di sviluppo, verifica che l'app sia importabile ed esegue automaticamente i test a ogni push e pull request. Il risultato è consultabile nella scheda **Actions** del repository su GitHub.
 
+## Import della knowledge base
+
+La knowledge base tecnica viene importata da un pacchetto locale governato. I dati grezzi dei clienti non devono essere aggiunti al repository pubblico.
+
+```text
+knowledge-import validate <bundle-path> --knowledge-root <knowledge-root>
+knowledge-import run <bundle-path> --knowledge-root <knowledge-root>
+knowledge-import report <batch-key>
+```
+
+Il validatore controlla hash SHA-256, percorsi, associazioni ai casi e stati di governance. I documenti non `approved` e le trascrizioni `machine_transcript_unreviewed` restano esclusi dalle fonti autorevoli. `CASE-WA-010` e `CASE-WA-013` mantengono obbligatoriamente accesso ristretto.
+
 ## Struttura
 
 - `app/api`: endpoint HTTP.
